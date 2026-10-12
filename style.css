@@ -333,7 +333,7 @@ nav a:hover {
     padding: 140px 20px;
     background: radial-gradient(
         circle at center,
-        #32204d 0%,
+        #690869 0%,
         var(--color-bg) 75%
     );
     text-align: center;
@@ -428,4 +428,48 @@ nav a:hover {
         transform: none;
         transition: none;
     }
+}
+
+/* ==========================
+   スマホ表示の最適化
+========================== */
+
+@media (max-width: 700px) {
+
+    /* ABOUT全体 */
+    .about-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    /* 自己紹介文 */
+    .about-content {
+        width: 100%;
+        min-width: 0;
+        text-align: left;
+    }
+
+    /* プロフィール画像 */
+    .about-image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-image img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    /* 文章の折り返し */
+    .about-text {
+        font-size: 15px;
+        line-height: 1.9;
+        overflow-wrap: break-word;
+    }
+
 }
