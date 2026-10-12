@@ -1,0 +1,431 @@
+/* ========================================
+   01. 共通設定・カラー
+======================================== */
+:root {
+    --color-bg: #101016;
+    --color-section: #171721;
+    --color-card: #222230;
+    --color-text: #ffffff;
+    --color-muted: #aaaaaa;
+    --color-accent: #bb96ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: sans-serif;
+}
+
+/* ========================================
+   02. ヘッダー・ナビゲーション
+======================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 8%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #bbbbbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-accent);
+}
+
+/* ========================================
+   03. ファーストビュー（TOP）
+======================================== */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+    background: radial-gradient(
+        circle at center,
+        #690869 0%,
+        var(--color-bg) 70%
+    );
+}
+
+.subtitle {
+    color: var(--color-accent);
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 64px);
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.artist-name {
+    color: var(--color-muted);
+    margin-bottom: 40px;
+}
+
+/* TOPとCONTACTで共通の依頼ボタン */
+.contact-button {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    padding: 16px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.contact-button:hover {
+    background-color: var(--color-text);
+    transform: translateY(-4px);
+}
+
+/* ========================================
+   04. 波形アニメーション
+======================================== */
+.waveform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 80px;
+    margin-bottom: 25px;
+}
+
+.waveform span {
+    width: 5px;
+    height: 40px;
+    background-color: var(--color-accent);
+    border-radius: 10px;
+    animation: sound-wave 1s ease-in-out infinite alternate;
+}
+
+.waveform span:nth-child(2n) {
+    animation-delay: -0.3s;
+}
+
+.waveform span:nth-child(3n) {
+    animation-delay: -0.6s;
+}
+
+@keyframes sound-wave {
+    from {
+        transform: scaleY(0.3);
+    }
+
+    to {
+        transform: scaleY(1.5);
+    }
+}
+
+/* ========================================
+   05. セクション共通設定
+======================================== */
+.section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 元CSSと同じく、共通余白と背景色を指定 */
+.section-padding {
+    padding: 120px 20px;
+    background-color: var(--color-section);
+    border-top: 1px solid #55416f;
+}
+
+.section-label {
+    color: var(--color-accent);
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+/* セクション見出しの文字サイズを共通化 */
+.about h2,
+.works h2,
+.price h2,
+.flow h2 {
+    font-size: clamp(28px, 4vw, 44px);
+}
+
+.about h2,
+.works h2 {
+    margin-bottom: 40px;
+}
+
+.price h2 {
+    margin-bottom: 20px;
+}
+
+.flow h2 {
+    margin-bottom: 50px;
+}
+
+/* ========================================
+   06. ABOUT
+======================================== */
+.about-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.about-text {
+    color: #cccccc;
+    font-size: 16px;
+    line-height: 2.2;
+}
+.about-image {
+    flex-shrink: 0;
+}
+
+.about-image img {
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #bb96ff;
+}
+
+/* ========================================
+   07. WORKS
+======================================== */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* ========================================
+   08. PRICE
+======================================== */
+.price-description {
+    color: var(--color-muted);
+    margin-bottom: 40px;
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.price-card {
+    background-color: var(--color-card);
+    padding: 45px 30px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #393949;
+    transition: 0.3s;
+}
+
+.price-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-accent);
+}
+
+.price-card h3 {
+    color: var(--color-accent);
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.plan-name {
+    color: #dddddd;
+    margin-bottom: 20px;
+}
+
+.price-amount {
+    color: var(--color-text);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.plan-description {
+    color: var(--color-muted);
+    font-size: 14px;
+}
+
+/* ========================================
+   09. FLOW
+======================================== */
+.flow-list {
+    max-width: 700px;
+}
+
+.flow-item {
+    display: flex;
+    gap: 30px;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.flow-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 24px;
+    top: 55px;
+    bottom: 5px;
+    width: 2px;
+    background-color: #55416f;
+}
+
+.flow-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+.flow-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.flow-item p {
+    color: var(--color-muted);
+    line-height: 1.8;
+}
+
+/* ========================================
+   10. CONTACT
+======================================== */
+.contact {
+    padding: 140px 20px;
+    background: radial-gradient(
+        circle at center,
+        #32204d 0%,
+        var(--color-bg) 75%
+    );
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: clamp(28px, 4vw, 48px);
+    margin-bottom: 30px;
+}
+
+.contact-description {
+    color: #cccccc;
+    line-height: 2;
+    margin-bottom: 45px;
+}
+
+.contact-email {
+    color: var(--color-muted);
+    margin-top: 35px;
+    font-size: 14px;
+}
+
+.social-links {
+    margin-top: 30px;
+}
+
+.social-links a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--color-text);
+}
+
+/* ========================================
+   11. スクロール表示アニメーション
+======================================== */
+.js-enabled .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.js-enabled .fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+   12. レスポンシブ対応
+======================================== */
+@media (max-width: 900px) {
+    .works-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .works-grid,
+    .price-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .price-card {
+        padding: 35px 20px;
+    }
+}
+
+/* 動きを減らす設定がONの場合 */
+@media (prefers-reduced-motion: reduce) {
+    .waveform span {
+        animation: none;
+    }
+
+    .js-enabled .fade-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
