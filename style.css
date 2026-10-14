@@ -330,7 +330,8 @@ nav a:hover {
    10. CONTACT
 ======================================== */
 .contact {
-    padding: 140px 20px;
+    min-height: 100svh;
+    padding: 160px 20px;
     background: radial-gradient(
         circle at center,
         #690869 0%,
@@ -396,10 +397,6 @@ nav a:hover {
 }
 
 @media (max-width: 600px) {
-    header {
-        flex-direction: column;
-        gap: 20px;
-    }
 
     nav {
         gap: 15px;
@@ -471,5 +468,121 @@ nav a:hover {
         line-height: 1.9;
         overflow-wrap: break-word;
     }
-
 }
+
+/* ==========================
+   ハンバーガーメニュー
+========================== */
+
+/* PCではボタンを非表示 */
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 700px) {
+
+    /* ヘッダー */
+    .site-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 100%;
+        padding: 14px 20px;
+
+        position: relative;
+        z-index: 9999;
+        overflow: visible;
+    }
+    
+    /* ロゴを左側に */
+    .site-header .logo {
+        margin-right: auto;
+    }
+
+    /* ハンバーガーボタン */
+    .menu-toggle {
+        margin-left: auto;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+
+        width: 42px;
+        height: 42px;
+        padding: 8px;
+
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* 3本線 */
+    .menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        flex-shrink: 0;
+
+        background: #bb96ff;
+        border-radius: 2px;
+
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* 開いたときに×へ変化 */
+    .menu-toggle.is-open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.is-open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.is-open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* 閉じているメニュー */
+    .site-nav {
+        display: none;
+        position: fixed;
+
+        top: 70px;
+        left: 0;
+        right: 0;
+        width: 100%;
+
+        padding: 16px 20px;
+        background: #1c1927;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+
+        flex-direction: column;
+        gap: 0;
+        z-index: 10000;
+    }
+
+    /* 開いたメニュー */
+    .site-nav.is-open {
+        display: flex;
+    }
+
+    /* メニュー内リンク */
+    .site-nav a {
+        display: block;
+        padding: 14px;
+
+        color: #ffffff;
+        text-decoration: none;
+        border-bottom: 1px solid #55416f;
+
+        transition: color 0.3s ease;
+    }
+
+    .site-nav a:hover {
+        color: #bb96ff;
+    }
+}
+

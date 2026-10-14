@@ -39,3 +39,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const siteNav = document.querySelector(".site-nav");
+
+    if (!menuToggle || !siteNav) {
+        console.error("メニューの要素が見つかりません");
+        return;
+    }
+
+    menuToggle.classList.remove("is-open");
+    siteNav.classList.remove("is-open");
+
+    menuToggle.addEventListener("click", () => {
+
+        const isOpen = menuToggle.classList.toggle("is-open");
+
+        siteNav.classList.toggle("is-open", isOpen);
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+        console.log("メニュー状態:", isOpen);
+        console.log("nav:", siteNav.className);
+    });
+
+    siteNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            menuToggle.classList.remove("is-open");
+            siteNav.classList.remove("is-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+
+});
+
